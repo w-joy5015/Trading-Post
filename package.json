@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "trading_post",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Practice trading stocks with up to date pricing information, but without the risk",
   "engines": {
     "node": ">= 7.0.0"
   },
