@@ -16,6 +16,10 @@ const User = db.define('user', {
       return () => this.getDataValue('password')
     }
   },
+  balance: {
+    type: Sequelize.NUMBER,
+    defaultValue: 5000000 //$50,000 in pennies --> this is to avoid rounding errors in JS; must be converted to dollars on frontend
+  },
   salt: {
     type: Sequelize.STRING,
     // Making `.salt` act like a function hides it when serializing to JSON.
