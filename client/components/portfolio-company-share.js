@@ -9,12 +9,19 @@ class CompanyShare extends React.Component {
   }
 
   render() {
+    let status
     const sharesOwned = this.props.sharesOwned
     const ticker = this.props.ticker
     const tickerPrice = this.props.tickerSymbol['05. price']
+    const openingPrice = this.props.tickerSymbol['02. open']
+    if (tickerPrice > openingPrice) {
+      status = 'up'
+    } else if (tickerPrice < openingPrice) {
+      status = 'down'
+    } else status = 'same'
 
     return (
-      <div className="share-owned">
+      <div data-status={status} className="portfolio-share">
         <h4>{ticker}</h4>
         <h4>{sharesOwned}</h4>
         <h4>${tickerPrice * sharesOwned}</h4>

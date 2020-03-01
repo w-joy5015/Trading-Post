@@ -51,7 +51,7 @@ form div {
   justify-content: space-evenly;
 }
 
-.share-owned {
+.portfolio-share[data-status='up'] {
   margin: 16px;
   width: 93%;
   display: flex;
@@ -60,4 +60,29 @@ form div {
   border-radius: 16px;
   padding: 15px;
   background-color: #bfdbf7;
+  color: #688e26;
+}
+
+.portfolio-share[data-status='down'] {
+  margin: 16px;
+  width: 93%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 16px;
+  padding: 15px;
+  background-color: #bfdbf7;
+  color: #bf211e;
+}
+
+.portfolio-share[data-status='same'] {
+  margin: 16px;
+  width: 93%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 16px;
+  padding: 15px;
+  background-color: #bfdbf7;
+  color: #7a7265;
 }
