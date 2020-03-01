@@ -1,34 +1,57 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import axios from 'axios'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {email} = props
+class UserHome extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tickerSymbol: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
-}
+  handleChange(event) {
+    this.setState({...this.state, [event.target.name]: event.target.value})
+  }
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    email: state.user.email
+  async handleSubmit(event) {
+    try {
+      event.preventDefault()
+      const stock = await axios.get(
+        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${
+          this.state.tickerSymbol
+        }&apikey={process.env.ALPHA_VANTAGE_KEY}`
+      )
+      console.log(stock.data['Global Quote'])
+      this.props.history.push(`/stock-details/${this.state.tickerSymbol}`)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Welcome, looking to buy or sell some shares?</h3>
+        <h4>Enter a stock's ticker symbol to search it up:</h4>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            name="tickerSymbol"
+            value={this.state.tickerSymbol}
+            onChange={this.handleChange}
+            required
+            type="text"
+            placeholder="Search..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    )
   }
 }
 
-export default connect(mapState)(UserHome)
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+export default UserHome
