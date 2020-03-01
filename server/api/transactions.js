@@ -6,7 +6,7 @@ router.post('/:userId', async (req, res, next) => {
   try {
     const newTransaction = {
       stockSymbol: req.body.symbol,
-      numOfShares: req.body.numOfShares,
+      numOfShares: Number(req.body.numOfShares),
       pricePerShare: req.body.price,
       amountPaid: req.body.total,
       userId: req.params.userId
@@ -18,5 +18,16 @@ router.post('/:userId', async (req, res, next) => {
     res.json(userTransactions)
   } catch (err) {
     next(err)
+  }
+})
+
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const userTransactions = await Transaction.findAll({
+      where: {userId: req.params.userId}
+    })
+    res.json(userTransactions)
+  } catch (err) {
+    console.error(err)
   }
 })
