@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getTransactionsThunk} from '../store/transaction'
+import SingleTransaction from './single-transaction'
 
 class TransactionHistory extends React.Component {
   componentDidMount() {
@@ -12,12 +13,14 @@ class TransactionHistory extends React.Component {
     const transactionArr = this.props.transactions
     return (
       <div>
+        <h3>Your Transaction History:</h3>
         {transactionArr
           ? transactionArr.map(current => {
               return (
-                <div key={current.id}>
-                  <h4>Date: {current.createdAt}</h4>
-                </div>
+                <SingleTransaction
+                  key={current.id}
+                  currentTransaction={current}
+                />
               )
             })
           : null}
