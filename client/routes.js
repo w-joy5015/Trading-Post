@@ -4,6 +4,8 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import StockDetails from './components/stock-details'
+import TransactionHistory from './components/transaction-history'
+import Portfolio from './components/portfolio'
 import {me} from './store'
 
 /**
@@ -26,6 +28,8 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/transactions/:id" component={TransactionHistory} />
+            <Route path="/portfolio/:id" component={Portfolio} />
             <Route path="/stock-details/:id" component={StockDetails} />
           </Switch>
         )}
