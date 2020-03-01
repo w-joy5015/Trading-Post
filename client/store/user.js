@@ -17,10 +17,22 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+// const updateBalance = newBalance => ({type: UPDATE_BALANCE, newBalance})
 
 /**
  * THUNK CREATORS
  */
+export const updateBalanceThunk = (value, id) => async dispatch => {
+  try {
+    const {data} = await axios.patch(`/api/users/updateBalance/${id}`, {
+      newBalance: value
+    })
+    dispatch(getUser(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
@@ -64,7 +76,6 @@ export default function(state = defaultUser, action) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
-      return defaultUser
     default:
       return state
   }

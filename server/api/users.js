@@ -15,3 +15,16 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.patch('/updateBalance/:id', async (req, res, next) => {
+  try {
+    await User.update(
+      {balance: req.body.newBalance},
+      {returning: true, where: {id: req.params.id}}
+    )
+    const updatedUser = await User.findByPk(req.params.id)
+    res.json(updatedUser)
+  } catch (err) {
+    console.error(err)
+  }
+})
