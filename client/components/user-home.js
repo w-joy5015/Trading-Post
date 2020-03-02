@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 /**
  * COMPONENT
@@ -18,7 +17,7 @@ class UserHome extends React.Component {
     this.setState({...this.state, [event.target.name]: event.target.value})
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     try {
       event.preventDefault()
       this.props.history.push(`/stock-details/${this.state.tickerSymbol}`)
@@ -29,7 +28,7 @@ class UserHome extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="home-container">
         <h3>Welcome, looking to buy or sell some shares?</h3>
         <h4>Enter a stock's ticker symbol to search it up:</h4>
         <form onSubmit={this.handleSubmit}>
