@@ -21,12 +21,6 @@ class UserHome extends React.Component {
   async handleSubmit(event) {
     try {
       event.preventDefault()
-      const stock = await axios.get(
-        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${
-          this.state.tickerSymbol
-        }&apikey={process.env.ALPHA_VANTAGE_KEY}`
-      )
-      console.log(stock.data['Global Quote'])
       this.props.history.push(`/stock-details/${this.state.tickerSymbol}`)
     } catch (err) {
       console.error(err)

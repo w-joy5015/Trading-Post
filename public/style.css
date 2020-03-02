@@ -86,3 +86,10 @@ form div {
   background-color: #bfdbf7;
   color: #7a7265;
 }
+
+/* utilities */
+.warning {
+  color: #bf211e;
+  font-style: italic;
+  font-size: 10px;
+}
