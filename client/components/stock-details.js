@@ -30,29 +30,31 @@ class StockDetails extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     const numOfShares = Number(this.state.numOfShares)
-    const price = Number(this.props.tickerSymbol['05. price'])
-    const total = numOfShares * price
-    const symbol = this.props.tickerSymbol['01. symbol']
-    let newBalance = Number(this.props.user.balance) - total * 100
-    if (newBalance >= 0) {
-      await this.props.updateBalanceThunk(newBalance, this.props.user.id)
-      await axios.post(`/api/transactions/${this.props.user.id}`, {
-        price: price * 100,
-        symbol,
-        total: total * 100,
-        numOfShares
-      })
-      alert(
-        `Payment successul. Your new balance is $${this.props.user.balance /
-          100}`
-      )
-    } else {
-      alert('Not enough funds')
+    if (numOfShares >= 1 && Number.isInteger(numOfShares)) {
+      const price = Number(this.props.tickerSymbol['05. price'])
+      const total = numOfShares * price
+      const symbol = this.props.tickerSymbol['01. symbol']
+      let newBalance = Number(this.props.user.balance) - total * 100
+      if (newBalance >= 0) {
+        await this.props.updateBalanceThunk(newBalance, this.props.user.id)
+        await axios.post(`/api/transactions/${this.props.user.id}`, {
+          price: price * 100,
+          symbol,
+          total: total * 100,
+          numOfShares
+        })
+        alert(
+          `Payment successul. Your new balance is $${this.props.user.balance /
+            100}`
+        )
+        this.props.history.push(`/transactions/${this.props.user.id}`)
+      } else {
+        alert('Not enough funds')
+      }
     }
   }
 
   render() {
-    const balance = this.props.user.balance
     const ticker = this.props.tickerSymbol
     return (
       <div>

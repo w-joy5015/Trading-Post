@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 /**
  * COMPONENT
@@ -18,15 +17,9 @@ class UserHome extends React.Component {
     this.setState({...this.state, [event.target.name]: event.target.value})
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     try {
       event.preventDefault()
-      const stock = await axios.get(
-        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${
-          this.state.tickerSymbol
-        }&apikey={process.env.ALPHA_VANTAGE_KEY}`
-      )
-      console.log(stock.data['Global Quote'])
       this.props.history.push(`/stock-details/${this.state.tickerSymbol}`)
     } catch (err) {
       console.error(err)
@@ -35,7 +28,7 @@ class UserHome extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="home-container">
         <h3>Welcome, looking to buy or sell some shares?</h3>
         <h4>Enter a stock's ticker symbol to search it up:</h4>
         <form onSubmit={this.handleSubmit}>
