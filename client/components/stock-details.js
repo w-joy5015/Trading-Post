@@ -57,8 +57,8 @@ class StockDetails extends React.Component {
   render() {
     const ticker = this.props.tickerSymbol
     return (
-      <div>
-        <h1>{ticker['01. symbol']}</h1>
+      <div className="stock-details-container">
+        <h1>Ticker Symbol: {ticker['01. symbol']}</h1>
         {ticker['05. price'] ? (
           <h3>
             Price per share: ${ticker['05. price'].slice(

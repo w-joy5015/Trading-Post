@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Palatino Linotype', 'Book Antiqua';
 }
 
 a {
@@ -18,6 +18,8 @@ form div {
 /* Navigation bar */
 
 .nav-container {
+  position: sticky;
+  top: 0;
   height: 60px;
   margin: -10px;
   width: 101.25%;
@@ -31,14 +33,13 @@ form div {
   color: black;
   z-index: 100;
   letter-spacing: 0.025em;
-  /* transition: background-color 0.2s linear;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
 }
 
 .nav-logo {
   padding-left: 30px;
   flex: 1;
   text-align: left;
+  font-family: 'Palatino Linotype', 'Book Antiqua';
 }
 
 .navbar-links {
@@ -48,6 +49,7 @@ form div {
   flex-direction: row;
   justify-content: space-evenly;
   padding: 0 10px;
+  font-family: 'Palatino Linotype', 'Book Antiqua';
 }
 
 .navbar-links a {
@@ -55,8 +57,55 @@ form div {
   color: black;
 }
 
+/* home page */
+
+.home-line-a {
+  margin: -10px;
+  width: 99%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.home-line-b {
+  margin: -10px;
+  height: 600px;
+  width: 99%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 15px;
+  background-color: #bfdbf7;
+}
+
+.home-text {
+  font-size: x-large;
+}
+
+/* Signup & Login */
+
 /* users home page */
 .home-container {
+  margin: 16px;
+  width: 93%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 15px;
+  background-color: #bfdbf7;
+}
+
+.stock-details-container {
   margin: 16px;
   width: 93%;
   display: flex;
