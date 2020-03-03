@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getTransactionsThunk} from '../store/transaction'
 import CompanyShare from './portfolio-company-share'
+import reduceTransactions from '../../utilities/reduceTransactions'
 
 class Portfolio extends React.Component {
   componentDidMount() {
@@ -11,14 +12,7 @@ class Portfolio extends React.Component {
 
   render() {
     const transactionArr = this.props.transactions
-    let sharesObj = {}
-    transactionArr.map(current => {
-      if (sharesObj[current.stockSymbol]) {
-        sharesObj[current.stockSymbol] += current.numOfShares
-      } else {
-        sharesObj[current.stockSymbol] = current.numOfShares
-      }
-    })
+    const sharesObj = reduceTransactions(transactionArr)
     return (
       <div>
         <h2>Your Portfolio:</h2>
