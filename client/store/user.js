@@ -17,7 +17,6 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-// const updateBalance = newBalance => ({type: UPDATE_BALANCE, newBalance})
 
 /**
  * THUNK CREATORS

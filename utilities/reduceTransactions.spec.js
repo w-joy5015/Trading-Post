@@ -4,24 +4,7 @@ const should = require('chai').should()
 
 //---TEST DATA:---
 
-const transactionsArrA = [
-  {
-    id: 6,
-    stockSymbol: 'AGIO',
-    numOfShares: 5,
-    pricePerShare: 4934,
-    amountPaid: 24670,
-    createdAt: '2020-03-03T01:48:30.247Z',
-    updatedAt: '2020-03-03T01:48:30.247Z',
-    userId: 2
-  }
-]
-
-const transactionsArrAResult = {
-  AGIO: 5
-}
-
-const transactionsArrB = [
+const transactionsArr = [
   {
     id: 1,
     stockSymbol: 'MSFT',
@@ -74,7 +57,7 @@ const transactionsArrB = [
   }
 ]
 
-const transactionsArrBResult = {
+const transactionsArrResult = {
   MSFT: 3,
   AGIO: 3,
   F: 4
@@ -83,13 +66,9 @@ const transactionsArrBResult = {
 //---TEST SPECS:---
 
 describe('reduces an array of objects to an object with tickers as keys and numOfShares as values', () => {
-  it('returns an object with expected key-value pairs', () => {
-    expect(reduceTransactions(transactionsArrA).to.be(transactionsArrAResult))
-  })
-
   it('returns the correct number of shares per ticker', () => {
-    expect(reduceTransactions(transactionsArrB)).to.be.equal(
-      transactionsArrBResult
+    expect(reduceTransactions(transactionsArr)).to.deep.equal(
+      transactionsArrResult
     )
   })
 })

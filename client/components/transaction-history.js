@@ -11,7 +11,9 @@ class TransactionHistory extends React.Component {
 
   render() {
     const transactionArr = this.props.transactions
-    return (
+    return !this.props.isLoggedIn ? (
+      <NotFound />
+    ) : (
       <div>
         <h3>Your Transaction History:</h3>
         {transactionArr
@@ -30,7 +32,8 @@ class TransactionHistory extends React.Component {
 }
 
 const mapState = state => ({
-  transactions: state.transactions
+  transactions: state.transactions,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatch = dispatch => ({
