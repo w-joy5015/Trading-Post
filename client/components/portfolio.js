@@ -13,7 +13,9 @@ class Portfolio extends React.Component {
   render() {
     const transactionArr = this.props.transactions
     const sharesObj = reduceTransactions(transactionArr)
-    return (
+    return !this.props.isLoggedIn ? (
+      <NotFound />
+    ) : (
       <div>
         <h2>Your Portfolio:</h2>
         <div className="portfolio-headings">
@@ -38,7 +40,8 @@ class Portfolio extends React.Component {
 }
 
 const mapState = state => ({
-  transactions: state.transactions
+  transactions: state.transactions,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatch = dispatch => ({
