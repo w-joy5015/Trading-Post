@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -53,9 +54,12 @@ class HomePage extends React.Component {
             height="300"
             width="340"
           />
-          <h5 className="home-text">
+          {/* <h5 className="home-text">
             Sign up now to start honing your trading skills without the risk!
-          </h5>
+          </h5> */}
+          <Link className="home-text" to="/signup">
+            Sign up now to start honing your trading skills without the risk!
+          </Link>
         </div>
       </div>
     )
