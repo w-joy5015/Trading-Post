@@ -18,7 +18,7 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn} = this.props.isLoggedIn
 
     return (
       <Switch>
@@ -35,7 +35,7 @@ class Routes extends Component {
             <Route path="/stock-details/:id" component={StockDetails} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
+        {/* Displays the HomePage component as a fallback */}
         <Route component={HomePage} />
       </Switch>
     )
