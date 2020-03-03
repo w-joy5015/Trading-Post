@@ -45,6 +45,7 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+      window.location.reload(true)
     }
   }
 }

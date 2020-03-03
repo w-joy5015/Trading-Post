@@ -11,9 +11,7 @@ class TransactionHistory extends React.Component {
 
   render() {
     const transactionArr = this.props.transactions
-    return !this.props.isLoggedIn ? (
-      <NotFound />
-    ) : (
+    return (
       <div>
         <h3>Your Transaction History:</h3>
         {transactionArr

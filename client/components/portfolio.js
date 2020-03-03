@@ -13,9 +13,7 @@ class Portfolio extends React.Component {
   render() {
     const transactionArr = this.props.transactions
     const sharesObj = reduceTransactions(transactionArr)
-    return !this.props.isLoggedIn ? (
-      <NotFound />
-    ) : (
+    return (
       <div>
         <h2>Your Portfolio:</h2>
         <div className="portfolio-headings">
